@@ -20,6 +20,7 @@
 	"homepage": "https://github.com/CarlosHenrique-dd/TO_DO-API#readme",
 	"description": "",
 	"dependencies": {
+		"@prisma/client": "6.10.1",
 		"bcrypt": "6.0.0",
 		"dotenv": "16.5.0",
 		"express": "5.1.0",
