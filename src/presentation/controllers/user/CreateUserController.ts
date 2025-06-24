@@ -8,8 +8,8 @@ export class CreateUserController {
 			const user = req.body
 			const userResponse = await this.createUserUseCase.execute(user)
 			return res.status(201).json(userResponse)
-		} catch (_error) {
-			return next
+		} catch (error) {
+			return next(error)
 		}
 	}
 }
