@@ -3,7 +3,8 @@ import z from "zod"
 
 const envSchema = z.object({
 	NODE_ENV: z.enum(["dev", "test", "production"]),
-	PORT: z.string().transform(Number).pipe(z.number().min(1).max(65535))
+	PORT: z.string().transform(Number).pipe(z.number().min(1).max(65535)),
+	SALT: z.number()
 })
 
 const _env = envSchema.safeParse(process.env)
