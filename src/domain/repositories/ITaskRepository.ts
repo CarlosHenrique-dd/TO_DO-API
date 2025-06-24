@@ -3,8 +3,8 @@ import type { UpdateTaskDTO } from "@/dtos/task/UpdateTaskDTO"
 import type { Task } from "../models/Task"
 
 export interface ITaskRepository {
-	create(task: CreateTaskDTO): Promise<Task>
-	getAll(): Promise<Task[]>
-	update(taskId: string, task: UpdateTaskDTO): Promise<Task>
-	delete(taskId: string): Promise<Task>
+	create(task: CreateTaskDTO, userId: string): Promise<Task>
+	findByUserId(userId: string): Promise<Task[]>
+	update(taskId: string, userId: string, task: UpdateTaskDTO): Promise<Task>
+	delete(taskId: string, userId: string): Promise<Task>
 }

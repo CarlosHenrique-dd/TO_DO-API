@@ -1,5 +1,5 @@
 export enum taskStatusEnums {
-	peding = "pending",
+	pending = "pending",
 	progress = "progress",
 	completed = "completed"
 }
