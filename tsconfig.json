@@ -1,0 +1,51 @@
+{
+	"compilerOptions": {
+		// Modern JavaScript target for Node.js environments
+		"target": "ES2022",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"lib": ["ES2022"],
+		// Output configuration
+		"outDir": "dist",
+		"rootDir": "src",
+		"sourceMap": true,
+		"declaration": true,
+		"declarationMap": true,
+		"inlineSources": true,
+		// Import handling
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"resolveJsonModule": true,
+		// Type checking and strictness
+		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictBindCallApply": true,
+		"strictPropertyInitialization": false,
+		"noImplicitThis": true,
+		"useUnknownInCatchVariables": true,
+		"alwaysStrict": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"exactOptionalPropertyTypes": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		// Developer experience
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"removeComments": false,
+		"noEmitOnError": true,
+		"incremental": true,
+		"tsBuildInfoFile": ".tsbuildinfo",
+		"composite": true,
+		// Path aliases
+		"baseUrl": "src",
+		"paths": {
+			"@/*": ["*"]
+		}
+	},
+	"include": ["src/**/*.ts"],
+	"exclude": ["node_modules", "dist", "**/*.spec.ts", "**/*.test.ts"]
+}
