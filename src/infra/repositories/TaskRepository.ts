@@ -3,7 +3,7 @@ import type { ITaskRepository } from "@/domain/repositories/ITaskRepository"
 import type { CreateTaskDTO } from "@/dtos/task/CreateTaskDTO"
 import type { UpdateTaskDTO } from "@/dtos/task/UpdateTaskDTO"
 import { prisma } from "@/shared/config/database/prisma"
-import type { taskStatusEnums } from "@/shared/enums/taskStatusEnum"
+import { taskStatusEnums } from "@/shared/enums/taskStatusEnum"
 
 export class TaskRepository implements ITaskRepository {
 	async create(task: CreateTaskDTO, userId: string): Promise<Task> {
@@ -11,7 +11,7 @@ export class TaskRepository implements ITaskRepository {
 			data: {
 				title: task.title,
 				status: task.status,
-				description: task.description === undefined ? null : task.description,
+				description: task.description ?? null,
 				user: {
 					connect: {
 						id: userId
@@ -24,7 +24,7 @@ export class TaskRepository implements ITaskRepository {
 			id: created.id,
 			title: created.title,
 			description: created.description,
-			status: created.status as taskStatusEnums,
+			status: taskStatusEnums[created.status],
 			createdAt: created.createdAt,
 			updatedAt: created.updatedAt,
 			userId: created.userId
@@ -43,7 +43,7 @@ export class TaskRepository implements ITaskRepository {
 				id: task.id,
 				title: task.title,
 				description: task.description,
-				status: task.status as taskStatusEnums,
+				status: taskStatusEnums[task.status],
 				createdAt: task.createdAt,
 				updatedAt: task.updatedAt,
 				userId: task.userId
@@ -63,7 +63,7 @@ export class TaskRepository implements ITaskRepository {
 			},
 			data: {
 				title: task.title,
-				description: task.description === undefined ? null : task.description,
+				description: task.description ?? null,
 				status: task.status
 			}
 		})
@@ -72,7 +72,7 @@ export class TaskRepository implements ITaskRepository {
 			id: taskUpdated.id,
 			title: taskUpdated.title,
 			description: taskUpdated.description,
-			status: taskUpdated.status as taskStatusEnums,
+			status: taskStatusEnums[taskUpdated.status],
 			createdAt: taskUpdated.createdAt,
 			updatedAt: taskUpdated.updatedAt,
 			userId: taskUpdated.userId
@@ -91,7 +91,7 @@ export class TaskRepository implements ITaskRepository {
 			id: taskDeleted.id,
 			title: taskDeleted.title,
 			description: taskDeleted.description,
-			status: taskDeleted.status as taskStatusEnums,
+			status: taskStatusEnums[taskDeleted.status],
 			createdAt: taskDeleted.createdAt,
 			updatedAt: taskDeleted.updatedAt,
 			userId: taskDeleted.userId
